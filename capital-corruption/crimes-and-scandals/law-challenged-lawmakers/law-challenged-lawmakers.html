@@ -1,0 +1,101 @@
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.10.3/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.2/umd/react.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.2/umd/react-dom.development.js"></script>
+    <link rel="stylesheet" href="law-challenged-lawmakers.css">
+</head>
+
+<body>
+
+    <script type="text/babel" data-presets="react,stage-3">
+
+        const LawmakerCard = (props) => {
+            const { name, subtitle, description, date } = props
+            return (
+                <div className="card lawmaker-card">
+                    <div className="card-body">
+                        <h5 className="card-title">{name}</h5>
+                        <h6 className="card-subtitle mb-2 text-muted">{subtitle}</h6>
+                        <p className="card-text">{description}</p>
+                        <p className="card-date text-muted">{date}</p>
+                    </div>
+                </div>
+            )
+        }
+
+        const LawChallengedLawmakersPage = () => {
+            const { useEffect, useState } = React
+
+            const [currentSelection, setCurrentSelection] = useState("")
+            const [criminalData, setCriminalData] = useState([]);
+            const [lawmakers, setLawmakers] = useState([])
+
+            useEffect(() => {
+                fetch("https://museumofpoliticalcorruption.org/wp-content/uploads/2024/04/law-challenged-lawmakers.json")
+                    .then(response => response.json())
+                    .then(data => {
+                        setCriminalData(data)
+                    })
+            }, [])
+
+            const handleClick = (category) => {
+                setCurrentSelection(category)
+                function filter_crime_categories(data) {
+                    return data.name == category;
+                }
+                let data = criminalData.filter(filter_crime_categories);
+                let lawmakersArray = data[0].lawmakers
+                setLawmakers(lawmakersArray)
+            }
+
+            const lawmakersList = lawmakers.map((lawmaker, index) => {
+                return <LawmakerCard name={lawmaker.name} subtitle={lawmaker.subtitle} description={lawmaker.description} date={lawmaker.date} />
+            })
+
+            return (
+                <>
+                    <nav className="albany-room-breadcrumbs" aria-label="breadcrumb" style={{ maxWidth: "100%", margin: "auto" }}>
+                        <ol className="breadcrumb" style={{ backgroundColor: "#fefdfe" }}>
+                            <li className="breadcrumb-item"><a href="https://museumofpoliticalcorruption.org/the-albany-room/"
+                                className="inactive-link">The Albany Room Home</a></li>
+                            <li className="breadcrumb-item"><a href="https://museumofpoliticalcorruption.org/capital-corruption/"
+                                className="inactive-link">Capital Corruption Home</a></li>
+                            <li className="breadcrumb-item"><a href="https://museumofpoliticalcorruption.org/crimes-and-scandals/"
+                                className="inactive-link">Crimes & Scandals</a></li>
+                            <li className="breadcrumb-item active current-page" aria-current="page">Law-Challenged Lawmakers</li>
+                        </ol>
+                    </nav>
+
+                    <p className="page-title">Meet the Law-Challenged Lawmakers</p>
+
+                    <div className="introduction-text">
+                        <p className="directions"><b>Select a category to learn more about elected officials who abused their positions of power.</b></p>
+                        <div className="crime-badges">
+                            <button className={`crime-badge ${currentSelection == "Bribery" ? `selected` : `inactive`}`} onClick={() => handleClick("Bribery")}>Bribery</button>
+                            <button className={`crime-badge ${currentSelection == "Extortion" ? `selected` : `inactive`}`} onClick={() => handleClick("Extortion")}>Extortion</button>
+                            <button className={`crime-badge ${currentSelection == "Graft" ? `selected` : `inactive`}`} onClick={() => handleClick("Graft")}>Graft</button>
+                            <button className={`crime-badge ${currentSelection == "Quid Pro Quo" ? `selected` : `inactive`}`} onClick={() => handleClick("Quid Pro Quo")}>Quid Pro Quo</button>
+                            <button className={`crime-badge ${currentSelection == "Sex Scandals" ? `selected` : `inactive`}`} onClick={() => handleClick("Sex Scandals")}>Sex Scandals</button>
+                        </div>
+                        <div className="lawmaker-cards card-deck">
+                            {lawmakersList}
+                        </div>
+                    </div>
+
+
+                </>)
+        }
+
+        ReactDOM.render(<LawChallengedLawmakersPage />, document.getElementById("root"));
+    </script>
+
+    <div id="root"></div>
+</body>

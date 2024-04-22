@@ -1,0 +1,331 @@
+/* Breadcrumbs */
+.albany-room-breadcrumbs {
+  margin-left: 35px !important;
+}
+@media (max-width: 450px) {
+  .albany-room-breadcrumbs {
+    margin-left: 10px !important;
+  }
+}
+
+.breadcrumb {
+  padding: 0px !important;
+}
+@media (max-width: 450px) {
+  .breadcrumb {
+    margin-left: 0px !important;
+  }
+}
+
+.breadcrumb-item {
+  font-family: "Gotham Medium", sans-serif;
+  font-size: 16px;
+  display: inline-flex;
+}
+
+.inactive-link {
+  color: #9933cc;
+}
+
+.inactive-link:hover {
+  color: #b758e7;
+  text-decoration: underline;
+}
+
+/* Page Title */
+.page-title {
+  margin-left: 75px !important;
+  color: #202020;
+  font-family: "Gotham Medium", sans-serif;
+  font-weight: bold !important;
+  font-size: 60px !important;
+  margin-top: 40px !important;
+  margin-bottom: 0px !important;
+}
+@media (max-width: 450px) {
+  .page-title {
+    margin-left: 0px !important;
+    font-size: 40px !important;
+    text-align: center;
+  }
+}
+
+/* Intro Text */
+.introduction-text {
+  font-family: "Gotham Book", sans-serif;
+  font-size: 16px !important;
+  color: #202020;
+  margin-left: 75px !important;
+}
+@media (max-width: 450px) {
+  .introduction-text {
+    margin-left: 0px !important;
+    text-align: center;
+  }
+}
+
+/* Quiz Area */
+.quiz {
+  background-color: #202020;
+  color: white !important;
+  border-radius: 16px;
+  padding-right: 40px !important;
+  padding-left: 40px !important;
+  padding-top: 20px !important;
+  padding-bottom: 60px !important;
+  margin-top: 40px !important;
+  margin-left: 75px !important;
+  margin-bottom: 80px !important;
+  box-shadow: 10px 10px 42px 0px rgba(0, 0, 0, 0.75);
+}
+@media (max-width: 450px) {
+  .quiz {
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+    padding-top: 10px !important;
+    padding-bottom: 60px !important;
+    margin-left: 0px !important;
+  }
+}
+
+.score-section {
+  display: flex;
+  font-family: "Gotham Book", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  align-items: center;
+}
+
+/* QUESTION/TIMER/LEFT SECTION */
+.question-section {
+  font-family: "Gotham Book", sans-serif;
+  font-size: 16px;
+  padding: 40px;
+  width: 100%;
+  position: relative;
+}
+
+.question-count {
+  margin-bottom: 20px;
+}
+
+.question-count span {
+  font-weight: 700;
+  font-size: 28px;
+}
+
+.question-text {
+  margin-bottom: 12px;
+}
+
+.timer-text {
+  background: rgb(230, 153, 12);
+  padding: 15px;
+  margin-top: 20px;
+  margin-right: 20px;
+  border: 5px solid rgb(255, 189, 67);
+  border-radius: 15px;
+  text-align: center;
+}
+
+/* ANSWERS/RIGHT SECTION */
+.answer-section {
+  padding: 0px 40px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+}
+@media (max-width: 450px) {
+  .answer-section {
+    flex-direction: column;
+  }
+}
+
+.answer-choice {
+  width: 100%;
+  font-family: "Gotham Book", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #202020;
+  background-color: #efe0f6;
+  border-radius: 16px;
+  display: flex;
+  padding: 10px 5px 0px 5px;
+  justify-content: center;
+  align-items: flex-end;
+  border: 3px solid #9933cc;
+  cursor: pointer !important;
+}
+
+/*
+.is-disabled {
+  background-color: white !important;
+  color: #b5b5b5 !important;
+  border: 3px solid #b5b5b5 !important;
+}
+*/
+
+.show-answers.is-correct,
+.show-answers.is-correct:hover {
+  background-color: rgb(195, 249, 195);
+  color: #202020;
+  border: 3px solid green;
+  cursor: not-allowed;
+}
+
+.show-answers.is-incorrect,
+.show-answers.is-incorrect:hover {
+  background-color: rgb(255, 190, 190);
+  color: #202020;
+  border: 3px solid red;
+  cursor: not-allowed;
+}
+
+.answer-choice:hover {
+  border: 3px solid white;
+  background-color: #9933cc;
+  color: white;
+}
+
+.answer-choice:focus {
+  outline: none;
+}
+
+.answer-choice svg {
+  margin-right: 5px;
+}
+
+.answer-description-section {
+  padding: 80px 40px 40px 40px;
+}
+
+.answer-description {
+  font-family: "Gotham Book", sans-serif;
+  font-size: 16px !important;
+  color: white;
+}
+
+.correct-message {
+  font-family: "Gotham Book", sans-serif;
+  font-size: 26px !important;
+  color: rgb(195, 249, 195);
+}
+
+.incorrect-message {
+  font-family: "Gotham Book", sans-serif;
+  font-size: 26px !important;
+  color: rgb(255, 190, 190);
+}
+
+.next-button,
+.retake-button,
+.learn-more-button {
+  font-family: "Gotham Medium", sans-serif;
+  font-size: 16px;
+  background-color: white;
+  color: #202020;
+  border-radius: 100px;
+  padding-top: 20px;
+}
+
+.learn-more-button {
+  font-family: "Gotham Medium", sans-serif;
+  font-size: 16px;
+  background-color: #9933cc;
+  color: white;
+  border-radius: 100px;
+  padding-top: 20px;
+}
+
+.next-button:hover,
+.retake-button:hover {
+  color: #202020;
+  background-color: #f0f0f0;
+}
+
+.learn-more-button:hover,
+.learn-more-button:active {
+  color: white;
+  background-color: #b758e7;
+}
+
+.final-page {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.action-button-group {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+/* Modal */
+.modal-body {
+  font-family: "Gotham Book", sans-serif;
+  font-size: 16px;
+  color: #202020;
+}
+
+.resources-section {
+  margin: 20px;
+  padding: 40px;
+  background-color: #f0f0f0;
+  color: #202020;
+  border-radius: 16px;
+}
+
+.additional-resources-title {
+  font-family: "Gotham Medium", sans-serif;
+  font-size: 20px;
+  color: #202020;
+}
+
+.newspaper-details-section {
+  margin: 20px;
+  padding: 40px;
+  background-color: #efe0f6;
+  color: #202020;
+  border-radius: 16px;
+}
+
+.learn-more-link {
+  font-family: "Gotham Medium", sans-serif;
+  font-size: 16px;
+  color: #9933cc;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.learn-more-link:hover {
+  color: #b758e7;
+  text-decoration: underline;
+}
+
+.modal {
+  font-family: "Gotham";
+  border-radius: 16px !important;
+}
+
+.modal-header {
+  background-color: #9933cc;
+  color: white;
+}
+
+.modal-title {
+  color: white !important;
+  font-family: "Gotham Medium", sans-serif;
+  margin-bottom: -10px !important;
+  margin-top: 10px !important;
+}
+
+.x-button {
+  color: white;
+}

@@ -1,0 +1,188 @@
+/* Breadcrumbs */
+.albany-room-breadcrumbs {
+  margin-left: 35px !important;
+}
+@media (max-width: 450px) {
+  .albany-room-breadcrumbs {
+    margin-left: 10px !important;
+  }
+}
+
+.breadcrumb {
+  padding: 0px !important;
+}
+@media (max-width: 450px) {
+  .breadcrumb {
+    margin-left: 0px !important;
+  }
+}
+
+.breadcrumb-item {
+  font-family: "Gotham Medium", sans-serif;
+  font-size: 16px;
+  display: inline-flex;
+}
+
+.inactive-link {
+  color: #9933cc;
+}
+
+.inactive-link:hover {
+  color: #b758e7;
+  text-decoration: underline;
+}
+
+/* Page Title */
+.page-title {
+  margin-left: 75px !important;
+  color: #202020;
+  font-family: "Gotham Medium", sans-serif;
+  font-weight: bold !important;
+  font-size: 60px !important;
+  margin-top: 40px !important;
+  margin-bottom: 0px !important;
+}
+@media (max-width: 450px) {
+  .page-title {
+    margin-left: 0px !important;
+    font-size: 40px !important;
+    text-align: center;
+  }
+}
+
+/* Intro Text */
+.introduction-text {
+  font-family: "Gotham Book", sans-serif;
+  font-size: 16px !important;
+  color: #202020;
+  margin-left: 75px !important;
+}
+@media (max-width: 450px) {
+  .introduction-text {
+    margin-left: 0px !important;
+    text-align: center;
+  }
+}
+
+/* Toggle and Views Section */
+.toggle-and-views {
+  background-color: #202020;
+  border-radius: 16px;
+  padding-right: 40px !important;
+  padding-left: 40px !important;
+  padding-top: 20px !important;
+  padding-bottom: 60px !important;
+  margin-left: 75px !important;
+  margin-bottom: 80px !important;
+}
+@media (max-width: 450px) {
+  .toggle-and-views {
+    padding: 0px !important;
+    margin-left: 0px !important;
+    text-align: center;
+  }
+}
+
+/*
+Header Section
+*/
+.header-section {
+  padding-top: 40px !important;
+  text-align: center;
+  font-family: "Gotham Book", sans-serif;
+  font-size: 16px !important;
+  color: white;
+}
+@media (max-width: 450px) {
+  .header-section {
+    margin-right: 10px !important;
+  }
+}
+
+.teaser-text {
+  font-family: "Gotham Bold", sans-serif;
+  font-size: 30px !important;
+  color: white;
+  margin-bottom: 0px !important;
+}
+
+/*
+Icons
+*/
+.icon-card-group {
+  max-width: 80%;
+  flex-direction: row !important;
+  cursor: pointer;
+}
+
+.card-img-top {
+  background-color: #202020 !important;
+}
+
+.icon-card {
+  border: none !important;
+  background-color: #202020 !important;
+}
+
+/*
+Content
+*/
+.committee-card {
+  margin-top: 40px !important;
+  margin-right: 100px !important;
+  margin-left: 100px !important;
+  background-color: #efe0f6;
+  color: #202020;
+  border-radius: 16px !important;
+  padding: 40px !important;
+}
+@media (max-width: 450px) {
+  .committee-card {
+    margin-top: 0px !important;
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+    border-top-right-radius: 0px !important;
+    border-top-left-radius: 0px !important;
+    border-bottom-right-radius: 16px !important;
+    border-top-left-radius: 0px !important;
+  }
+}
+
+.committee-title {
+  color: #9933cc !important;
+  font-family: "Gotham Medium", sans-serif;
+  font-size: 30px;
+  margin-bottom: 0px !important;
+}
+
+.img-container {
+  display: flex;
+  justify-content: center;
+}
+
+.committee-img {
+  border-radius: 16px !important;
+  align-self: center !important;
+}
+
+.committee-details {
+  margin-top: 20px !important;
+  font-family: "Gotham Book", sans-serif;
+  font-size: 16px !important;
+  color: #202020;
+}
+
+.learn-more {
+  font-family: "Gotham Medium", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #9933cc;
+  margin-bottom: 20px !important;
+  margin-top: 40px;
+}
+
+.learn-more-text {
+  font-family: "Gotham Book", sans-serif;
+  font-size: 16px;
+  color: #202020;
+}

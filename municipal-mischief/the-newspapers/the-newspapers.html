@@ -1,0 +1,241 @@
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.10.3/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.2/umd/react.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.2/umd/react-dom.development.js"></script>
+    <link rel="stylesheet" href="the-newspapers.css">
+</head>
+
+<body>
+
+    <script type="text/babel" data-presets="react,stage-3">
+
+        const TheNewspapersPage = () => {
+            const { useEffect, useState } = React
+            //const [questions, setQuestions] = useState([]);
+            const [currentQuestion, setCurrentQuestion] = useState(0)
+            const [showScore, setShowScore] = useState(false)
+            const [score, setScore] = useState(0)
+            const [isAnswerCorrect, setIsAnswerCorrect] = useState(false)
+            const [showAnswerDescription, setShowAnswerDescription] = useState(false)
+            const [isDisabled, setIsDisabled] = useState(false)
+
+            /*
+            useEffect(() => {
+                fetch("https://museumofpoliticalcorruption.org/wp-content/uploads/2024/01/the-newspapers.json")
+                    .then(response => response.json())
+                    .then(data => {
+                        setQuestions(data)
+                    })
+            }, [])
+            */
+
+            const questions = [
+                {
+                    "newspaperName": "Albany Evening Journal",
+                    "questionText": "Which political party did the Albany Evening Journal promote?",
+                    "answerOptions": [
+                        { "answerText": "Democratic", "isCorrect": false },
+                        { "answerText": "Republican", "isCorrect": true },
+                        { "answerText": "Independent", "isCorrect": false }
+                    ],
+                    "answerDescription": "The Albany Evening Journal was Republican…eventually. Thurlow Weed started The Albany Evening Journal to support Anti- Masonry in 1830, but soon began to support the Whig Party. When the Whig party dissolved, he and his newspaper began supporting the new Republican party around 1854.",
+                    "details": "In 1889 Weed’s grandson, William “Billy”  Barnes bought The Albany Evening Journal promoting it as “the only Republican paper in Albany.”  Barnes was the last Republican Party boss in Albany County.  In 1922 corruption scandals over the diversion of city-purchased coal to party favorites  helped propel Democrat William Hackett to mayoral victory, marking the beginning of hundred year Democratic rule of Albany’s City Hall.",
+                    "learnMoreOptions": [
+                        {
+                            "topic": "William “Billy” Barnes",
+                            "link": "https://en.wikipedia.org/wiki/William_Barnes_Jr."
+                        },
+                        {
+                            "topic": "Thurlow Weed",
+                            "link": "https://www.britannica.com/biography/Thurlow-Weed"
+                        },
+                        {
+                            "topic": "the history of the Republican Party",
+                            "link": "https://www.britannica.com/topic/Republican-Party"
+                        }
+                    ]
+                },
+                {
+                    "newspaperName": "Albany Argus",
+                    "questionText": "Which political party did the Albany Argus promote?",
+                    "answerOptions": [
+                        { "answerText": "Democratic", "isCorrect": true },
+                        { "answerText": "Republican", "isCorrect": false },
+                        { "answerText": "Independent", "isCorrect": false }
+                    ],
+                    "answerDescription": "The Albany Argus Newspaper was Democratic but, it depends on the date. The Albany Argus was published as a semiweekly newspaper beginning in 1813, well before the modern Democratic Party began coalescing in the 1840’s and before the name was officially adopted in 1844.",
+                    "details": "By 1825, The Argus was published as a daily newspaper.  The new publisher, Edwin Croswell had been encouraged to join the paper by then-State Senator Martin Van Buren and his political associates known as the Albany Regency.  The Regency became one of the first American political machines dominating New York State’s government between 1822 and 1838. The Argus was the Regency’s voice, echoing Van Buren’s positions on issues like the construction of the Erie Canal and the establishment of a national bank.  The Albany Regency purported to be against political corruption, but also created the “spoils system” which rewards the supporters of a party with government positions given to friends (cronyism) and relatives (nepotism).  By the time The Argus was closed in 1921, it had helped elect President Grover Cleveland.  Cleveland’s Secretary of the Treasury, Daniel Manning, had been the owner of The Argus, and John H. Manning, Daniel’s son, was the current owner…and the Mayor of Albany.",
+                    "learnMoreOptions": [
+                        {
+                            "topic": "the history of the Democratic Party",
+                            "link": "https://www.britannica.com/topic/Democratic-Party"
+                        },
+                        {
+                            "topic": "The Albany Argus",
+                            "link": "https://hoxsie.org/2015/11/23/albany-newspapers-1886/"
+                        },
+                        {
+                            "topic": "Martin Van Buren",
+                            "link": "https://www.britannica.com/biography/Martin-Van-Buren"
+                        }
+                    ]
+                },
+                {
+                    "newspaperName": "Albany Times Union",
+                    "questionText": "Which political party did the Albany Times Union promote?",
+                    "answerOptions": [
+                        { "answerText": "Democratic", "isCorrect": false },
+                        { "answerText": "Republican", "isCorrect": false },
+                        { "answerText": "Independent", "isCorrect": true }
+                    ],
+                    "answerDescription": "The Albany Times Union was mostly independent. Started in 1856 and a Hearst newspaper since the 1920s, the Albany Times Union today is widely respected for its vigilant reporting, particularly on New York state government and politics.  Among many prestigious awards, the Times Union in 2022 was named the Newspaper of the Year by the New York Press Association and Newspaper of Distinction by the Journalists Association of New York. ",
+                    "details": "The Albany Times Union is the oldest continuously published daily newspaper in the Capital Region.  Its founders, working-class printers Alfred Stone, David M. Barnes, and Edwrd H. Boyd published the first 4-page issue on April 21, 1856.  Despite the nonpartisan intent of its founders, under the leadership of Martin P. Glynn (a one-year Governor of New York who remained as governor while still running the paper) the Times Union began supporting and taking favors from the O’Connell-Corning Democratic machine. When Gene Robb became publisher in the early 1960’s, theTimes Union became a  critic of the Democratic machine. ",
+                    "learnMoreOptions": [
+                        {
+                            "topic": "The Albany Times Union",
+                            "link": "https://extras.timesunion.com/tu150/overview/overview1.html"
+                        },
+                        {
+                            "topic": "John Henry Farrell",
+                            "link": "https://extras.timesunion.com/tu150/overview/overview3.html"
+                        },
+                        {
+                            "topic": "Martin Glynn and Gene Robb",
+                            "link": "https://extras.timesunion.com/tu150/stories/index.html"
+                        }
+                    ]
+                }
+            ];
+
+            const handleAnswerOptionClick = (isCorrect) => {
+                setShowAnswerDescription(true)
+                setIsDisabled(true)
+                if (isCorrect) {
+                    setScore(score + 1)
+                    setIsAnswerCorrect(true)
+                } else {
+                    setIsAnswerCorrect(false)
+                }
+            };
+
+            const handleNextQuestion = () => {
+                setIsDisabled(false)
+                const nextQuestion = currentQuestion + 1
+                if (nextQuestion < questions.length) {
+                    setCurrentQuestion(nextQuestion)
+                    setShowAnswerDescription(false)
+
+                } else {
+                    setShowScore(true)
+                }
+            }
+
+            const handleRetake = () => {
+                setShowScore(false)
+                setScore(0)
+                setCurrentQuestion(0)
+                setShowAnswerDescription(false)
+                setIsDisabled(false)
+            }
+
+            return (
+                <>
+                    <nav className="albany-room-breadcrumbs" aria-label="breadcrumb" style={{ maxWidth: "100%", margin: "auto" }}>
+                        <ol className="breadcrumb" style={{ backgroundColor: "#fefdfe" }}>
+                            <li className="breadcrumb-item"><a href="https://museumofpoliticalcorruption.org/the-albany-room/"
+                                className="inactive-link">The Albany Room Home</a></li>
+                            <li className="breadcrumb-item"><a href="https://museumofpoliticalcorruption.org/municipal-mischief/"
+                                className="inactive-link">Municipal Mischief Home</a></li>
+                            <li className="breadcrumb-item active current-page" aria-current="page">The Newspapers</li>
+                        </ol>
+                    </nav>
+
+                    <p className="page-title">The Newspapers</p>
+
+                    <p className="introduction-text">One of the earliest forms of social media, newspapers helped influence public opinion, and were not infrequently used to promote the interests of their owners and influential politicians.</p>
+
+                    <p className="introduction-text"><b>Can you guess which of  Albany’s many news organizations promoted which  political party? Take the quiz below to find out.</b></p>
+
+                    {showScore ? (
+                        <>
+                            <div className='quiz'>
+                                <div className="final-page">
+                                    <div className='score-section'>
+                                        You scored {score} out of {questions.length}
+                                    </div>
+                                    <button className="retake-button" onClick={() => handleRetake()}>Retake Quiz</button>
+                                </div>
+
+                            </div>
+                        </>
+                    ) : (
+
+                        <>
+                            <div className='quiz'>
+                                <div className='question-section'>
+                                    <div className='question-count'>
+                                        <span>Question {currentQuestion + 1}</span>/{questions.length}
+                                    </div>
+                                    <div className='question-text'>{questions[currentQuestion].questionText}</div>
+                                </div>
+                                <div className='answer-section'>
+                                    {questions[currentQuestion].answerOptions.map((answerOption) => (
+                                        <button className={`answer-choice ${isDisabled && `is-disabled`} ${showAnswerDescription && `show-answers`} ${(answerOption.isCorrect) ? `is-correct` : `is-incorrect`}`} disabled={isDisabled} onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
+                                    ))}
+                                </div>
+                                {
+                                    showAnswerDescription &&
+                                    (<>
+                                        <div className="answer-description-section">
+                                            {isAnswerCorrect ? <p className="correct-message">That's correct!</p> : <p className="incorrect-message">Oops, that's incorrect!</p>}
+                                            <p className="answer-description">{questions[currentQuestion].answerDescription}</p>
+                                            <div className="action-button-group">
+                                                <button type="button" data-toggle="modal" data-target="#exampleModal" className="learn-more-button" onClick={() => handleLearnMore()}>Learn More</button>
+                                                <button className="next-button" onClick={() => handleNextQuestion()}>{currentQuestion == 2 ? `See Results` : `Next Question`}</button>
+                                            </div>
+                                        </div>
+                                        <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div className="modal-dialog" role="document">
+                                                <div className="modal-content">
+                                                    <div className="modal-header">
+                                                        <h5 className="modal-title" id="exampleModalLabel">{questions[currentQuestion].newspaperName}</h5>
+                                                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                                            <span className="x-button" aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div className="modal-body">
+                                                        <div className="newspaper-details-section">{questions[currentQuestion].details}</div>
+                                                        <div className="resources-section">
+                                                            <p className="additional-resources-title">Additional Resources</p>
+                                                            {questions[currentQuestion].learnMoreOptions.map((learnMoreOption) => (
+                                                                <p>Read more about <a className="learn-more-link" href={learnMoreOption.link} target="_blank">{learnMoreOption.topic}</a>.</p>
+                                                            ))}
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </>)
+                                }
+
+                            </div>
+
+                        </>
+                    )}
+                </>)
+        }
+
+        ReactDOM.render(<TheNewspapersPage />, document.getElementById("root"));
+    </script>
+
+    <div id="root"></div>
+</body>

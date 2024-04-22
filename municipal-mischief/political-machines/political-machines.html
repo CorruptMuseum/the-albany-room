@@ -1,0 +1,222 @@
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.10.3/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.2/umd/react.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.2/umd/react-dom.development.js"></script>
+    <link rel="stylesheet" href="political-machines.css">
+</head>
+
+<body>
+
+    <script type="text/babel" data-presets="react,stage-3">
+
+        const PoliticalMachinesPage = () => {
+            const { useEffect, useState } = React
+
+            const [modalTitle, setModalTitle] = useState('')
+            const [modalDescription, setModalDescription] = useState('')
+
+            const handleModalDataUpdate = (title, description) => {
+                setModalTitle(title)
+                setModalDescription(description)
+            }
+
+            const PoliticalMachineCard = (props) => {
+                const { machineName, machineTime, machineDescription, machineLearnMoreLink } = props
+                return (<>
+                    <div className="political-machine-card">
+                        <div className="political-machine-card-row-1">
+                            <p className="machine-time">{machineTime}</p>
+                        </div>
+                        <div className="political-machine-card-row-2">
+                            <p className="machine-name">{machineName}</p>
+                            <p className="machine-description">{machineDescription}</p>
+                            {machineLearnMoreLink &&
+                                <a href={machineLearnMoreLink}
+                                    className="learn-more">
+                                    Learn more
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="icon" viewBox="0 0 20 20"
+                                        fill="currentColor">
+                                        <path fill-rule="evenodd"
+                                            d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </a>
+                            }
+                        </div>
+                    </div>
+                </>)
+            }
+
+            const politicalMachines = [
+                {
+                    machineName: "The Roscoe Conkling-Tom Platt- Chester A. Arthur Republican Machine",
+                    machineTime: "Late 1800s/early 1900s",
+                    machineDescription: "The State-wide NY Republican machine under Senators Roscoe Conkling and Tom Platt ruled state politics in New York and Albany for almost 30 years, using patronage and strong-arm tactics to muscle its will.",
+                    machineLearnMoreLink: "https://museumofpoliticalcorruption.org/conkling-platt-machine/"
+                },
+                {
+                    machineName: "The Barnes Machine",
+                    machineTime: "1894-1921",
+                    machineDescription: "William Barnes Jr. (1866 – 1930) was the owner and publisher of the Albany Evening Journal.  Barnes’ Republican political machine had a thirty-year reign over Albany politics from 1891-1921.  Like many political machines of the time, the Barnes machine was involved in distributing government jobs and contracts in exchange for political loyalty and support.",
+                    machineLearnMoreLink: "https://museumofpoliticalcorruption.org/barnes-machine/"
+                },
+                {
+                    machineName: "The Corning-O’Connell Machine",
+                    machineTime: "1921 - 1983 (and beyond)",
+                    machineDescription: "Known for its ability to deliver services and support to constituents in exchange for political loyalty, the Corning-O'Connell political machine played a significant role in shaping Albany's political landscape during the 20th century.",
+                    machineLearnMoreLink: "https://museumofpoliticalcorruption.org/corning-oconnell-machine/"
+                }
+            ]
+
+            const machineParts = [
+                {
+                    "id": "H1",
+                    "name": "Hierarchy",
+                    "placement": {
+                        "left": "60%",
+                        "top": "20%"
+                    },
+                    "description": "Political machines have a hierarchical structure, with a leader at the top, followed by various levels of subordinates.",
+                },
+                {
+                    "id": "H2",
+                    "name": "Patronage",
+                    "placement": {
+                        "left": "35%",
+                        "top": "6%"
+                    },
+                    "description": "Political machines often distribute government jobs, contracts, and favors to their supporters and members in exchange for loyalty and political support.",
+                },
+                {
+                    "id": "H3",
+                    "name": "Electoral Manipulation",
+                    "placement": {
+                        "left": "10%",
+                        "top": "75%"
+                    },
+                    "description": "Machines often have the ability to influence elections through tactics such as bribery, intimidation, voter fraud, gerrymandering, and control over the party nomination process. ",
+                },
+                {
+                    "id": "H4",
+                    "name": "Ethnic or Community Ties",
+                    "placement": {
+                        "left": "80%",
+                        "top": "50%"
+                    },
+                    "description": "Some political machines are built on ethnic, racial, or community identities and target specific demographic groups for support. This can help create a strong and loyal voter base.",
+                },
+                {
+                    "id": "H5",
+                    "name": "Control Over Local Government",
+                    "placement": {
+                        "left": "55%",
+                        "top": "80%"
+                    },
+                    "description": "Political machines often seek to control key positions within local governments, including mayors, city council members, and other officials. This control enables the machine to direct government resources and services to its supporters.",
+                },
+                {
+                    "id": "H6",
+                    "name": "Party Politics",
+                    "placement": {
+                        "left": "35%",
+                        "top": "45%"
+                    },
+                    "description": " In many cases, political machines are closely aligned with party politics, and they work to maintain their party's dominance in a given area.",
+                }
+            ]
+
+            const MachinePartsHotspots = (props) => {
+                const { machinePart } = props
+                const { id, placement, name, description } = machinePart
+                const dataBsTarget = "#" + id
+
+                return (
+                    <>
+                        <button type="button" data-toggle="modal" data-target="#orgModal" className="hotspot" style={placement} onClick={() => handleModalDataUpdate(name, description)}>
+                            <div className="hotspot-outer-circle"></div>
+                            <div className="hotspot-inner-circle"></div>
+                        </button>
+                    </>
+                )
+            }
+
+            const machinePartsHotspots = machineParts.map((machinePart, index) => {
+                return <MachinePartsHotspots machinePart={machinePart} key={index} />
+            })
+
+            return (
+                <>
+                    <nav className="albany-room-breadcrumbs" aria-label="breadcrumb" style={{ maxWidth: "100%", margin: "auto" }}>
+                        <ol className="breadcrumb" style={{ backgroundColor: "#fefdfe" }}>
+                            <li className="breadcrumb-item"><a href="https://museumofpoliticalcorruption.org/the-albany-room/"
+                                className="inactive-link">The Albany Room Home</a></li>
+                            <li className="breadcrumb-item"><a href="https://museumofpoliticalcorruption.org/municipal-mischief/"
+                                className="inactive-link">Municipal Mischief Home</a></li>
+                            <li className="breadcrumb-item active current-page" aria-current="page">Political Machines</li>
+                        </ol>
+                    </nav>
+
+                    <p className="page-title">Political Machines</p>
+
+                    <p className="text"> A political machine is a political organization or group that wields significant influence over the government or a particular geographic area, often through a combination of patronage, corruption, and control over key aspects of the political process.</p>
+
+                    <div className="toggle-and-views">
+                        <p className="directions"><b>How does a well-oiled Political Machine work and how does it keep on running? <br /><span style={{ color: "#9933cc" }}> Click on the green dots to find out.</span></b></p>
+                        <div className="political-machine-gif-section">
+                            <div className="hotspots">
+                                <img className="political-machine-gif" src="https://museumofpoliticalcorruption.org/wp-content/uploads/2024/01/machinery.gif" alt="Political Machine Gif" />
+                                {machinePartsHotspots}
+                            </div>
+                        </div>
+                    </div>
+
+                    <p className="subheading">Political Machine Organizational Flow Chart</p>
+                    <p className="text">Albany’s  political machine had a very specific, hierarchical structure, which included hundreds of Committeemen at the bottom.  Above the Committeemen were the Ward Leaders.</p>
+                    <p className="text"><b>Select a role to learn more about it.</b></p>
+                    <div className="organization-flow-chart-section">
+                        <button type="button" data-toggle="modal" data-target="#orgModal" className="boss-button" onClick={() => handleModalDataUpdate("Boss", "The “Boss” was a political machine’s center of power, which revolved around a single individual who instilled fear and respect among those he claimed to represent and ruled with power, greed, ruthlessness, charisma, and charm.")}>Boss</button>
+                        <button type="button" data-toggle="modal" data-target="#orgModal" className="ward-leader-button" onClick={() => handleModalDataUpdate("Ward Leader", "Albany is divided into multiple Wards (legislative districts). Each district elected a city resident to become a Ward leader. Ward leaders  served as the legislative branch of Albany’s government.")}>Ward Leader</button>
+                        <button type="button" data-toggle="modal" data-target="#orgModal" className="committeemen-button" onClick={() => handleModalDataUpdate("Committeemen", "Committeemen were members of the Albany County Democratic Committee (thus the name of their position). Voters knew that if they wanted the City to do something for them or their neighborhood, the way to get it done was to call your Committeeman.  No one considered calling the City employees in the appropriate department which would handle the request.")}>Committeemen</button>
+                    </div>
+                    <div className="modal fade" id="orgModal" tabindex="-1" role="dialog" aria-labelledby="orgModalLabel" aria-hidden="true">
+                        <div className="modal-dialog" role="document">
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <h5 className="modal-title" id="orgModalLabel">{modalTitle}</h5>
+                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                        <span className="x-button" aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div className="modal-body">
+                                    <p>{modalDescription}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="political-machines-of-albanys-past-section">
+                        <p className="subheading">The Political Machines of Albany’s Past</p>
+                        <div className="political-machine-cards">
+                            {politicalMachines.map((politicalMachine) => {
+                                const { machineName, machineTime, machineDescription, machineLearnMoreLink } = politicalMachine;
+                                return <PoliticalMachineCard machineName={machineName} machineTime={machineTime} machineDescription={machineDescription} machineLearnMoreLink={machineLearnMoreLink} />
+                            })}
+                        </div>
+                    </div>
+
+                </>)
+        }
+
+        ReactDOM.render(<PoliticalMachinesPage />, document.getElementById("root"));
+    </script>
+
+    <div id="root"></div>
+</body>

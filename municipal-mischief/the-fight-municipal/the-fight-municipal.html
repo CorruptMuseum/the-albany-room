@@ -1,0 +1,143 @@
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.10.3/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.2/umd/react.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.2/umd/react-dom.development.js"></script>
+    <link rel="stylesheet" href="the-fight-municipal.css">
+</head>
+
+<body>
+
+    <script type="text/babel" data-presets="react,stage-3">
+
+        const TheFightAgainstCorruptionPage = () => {
+            const { useEffect, useState } = React
+
+            const useMountTransition = (isMounted, unmountDelay) => {
+                const [hasTransitionedIn, setHasTransitionedIn] = useState(false);
+
+                useEffect(() => {
+                    let timeoutId;
+
+                    if (isMounted && !hasTransitionedIn) {
+                        setHasTransitionedIn(true);
+                    } else if (!isMounted && hasTransitionedIn) {
+                        timeoutId = setTimeout(() => setHasTransitionedIn(false), unmountDelay);
+                    }
+                    return () => {
+                        clearTimeout(timeoutId);
+                    };
+                }, [unmountDelay, isMounted, hasTransitionedIn]);
+
+                return hasTransitionedIn;
+            };
+
+            const [currentSelection, setCurrentSelection] = useState("")
+
+            const ICON_LINKS = Object.freeze({
+                COM13_ACTIVE: "https://museumofpoliticalcorruption.org/wp-content/uploads/2023/10/com-13-active.png",
+                COM13_INACTIVE: "https://museumofpoliticalcorruption.org/wp-content/uploads/2023/10/com-13-inactive.png",
+                BROTHERS_ACTIVE: "https://museumofpoliticalcorruption.org/wp-content/uploads/2023/10/bro-active.png",
+                BROTHERS_INACTIVE: "https://museumofpoliticalcorruption.org/wp-content/uploads/2023/10/bro-inactive.png"
+            });
+
+
+            let COMMITTEE_TITLE = ""
+            let COMMITTEE_IMG = ""
+            let COMMITTEE_CONTENT = ''
+            let LEARN_MORE_TXT = ""
+            let LEARN_MORE_LINK = ''
+            switch (currentSelection) {
+                case "com13":
+                    COMMITTEE_TITLE = "The Committee of 13"
+                    COMMITTEE_IMG = "https://museumofpoliticalcorruption.org/wp-content/uploads/2024/03/Committee-of-13-Marcus_T._Hun.png"
+                    COMMITTEE_CONTENT = "The Committee of 13 was headquartered at 25 North Pearl Street.  It was a  good government group founded in 1881 by several Albany lawyers. The Committee investigated fraud and corruption in the city  and brought many changes and transparency into how the government works. "
+                    break;
+                case "brothers":
+                    COMMITTEE_TITLE = "The Brothers"
+                    COMMITTEE_IMG = ""
+                    COMMITTEE_CONTENT = "The Brothers was a civil rights group that was active in Albany beginning in the mid 1960s.  It was centered in the African-American communities of Albany's South End and Arbor Hill.  The Brothers used protests, education, voter registration and other non-violent means to rail against issues prevalent to the community:  poverty, poor access to health care, inadequate housing conditions, police brutality, lack of jobs, and the oppression of Albany's political machine."
+                    LEARN_MORE_TXT = "To learn more about The Brothers, see "
+                    LEARN_MORE_LINK = 'https://archives.albany.edu/description/catalog/apap081#:~:text=Biographical%20%2F%20Historical%3A-,The%20Brothers%20was%20a%20civil%20rights%20group%20that%20was%20active,End%20and%20Arbor%20Hill%20neighborhoods'
+                    break;
+            }
+
+
+            function com13Active(e) {
+                e.target.src = ICON_LINKS.COM13_ACTIVE
+            }
+
+            function com13Inactive(e) {
+                e.target.src = ICON_LINKS.COM13_INACTIVE
+            }
+
+            function brothersActive(e) {
+                e.target.src = ICON_LINKS.BROTHERS_ACTIVE
+            }
+
+            function brothersInactive(e) {
+                e.target.src = ICON_LINKS.BROTHERS_INACTIVE
+            }
+
+            const handleClick = (value) => {
+                setCurrentSelection(value)
+            }
+
+            return (
+                <>
+                    <nav className="albany-room-breadcrumbs" aria-label="breadcrumb" style={{ maxWidth: "100%", margin: "auto" }}>
+                        <ol className="breadcrumb" style={{ backgroundColor: "#fefdfe" }}>
+                            <li className="breadcrumb-item"><a href="https://museumofpoliticalcorruption.org/the-albany-room/"
+                                className="inactive-link">The Albany Room Home</a></li>
+                            <li className="breadcrumb-item"><a href="https://museumofpoliticalcorruption.org/municipal-mischief/"
+                                className="inactive-link">Municipal Mischief Home</a></li>
+                            <li className="breadcrumb-item active current-page" aria-current="page">The Fight Against Corruption</li>
+                        </ol>
+                    </nav>
+
+                    <p className="page-title">The Fight Against Corruption</p>
+
+                    <p className="introduction-text">The fight against political corruption has a history as long as corruption itself.</p>
+
+                    <div className="toggle-and-views">
+                        <div className="header-section">
+                            <p className="directions"><b>Learn about city-level anti-corruption efforts in Albany by selecting an organization
+                                below.</b></p>
+                        </div>
+                        <div className="toggle-view-div d-flex align-items-center justify-content-center">
+                            <div className="card-group icon-card-group">
+                                <div className="card icon-card" onClick={() => handleClick("com13")}>
+                                    <img className="card-img-top" src={(currentSelection == "com13") ? ICON_LINKS.COM13_ACTIVE : ICON_LINKS.COM13_INACTIVE} alt="The Committee of 13" onMouseEnter={com13Active} onMouseLeave={(currentSelection == "com13") ? com13Active : com13Inactive} />
+                                </div>
+
+                                <div className="card icon-card" onClick={() => handleClick("brothers")}>
+                                    <img className="card-img-top" src={(currentSelection == "brothers") ? ICON_LINKS.BROTHERS_ACTIVE : ICON_LINKS.BROTHERS_INACTIVE} alt="The Brothers" onMouseEnter={brothersActive} onMouseLeave={(currentSelection == "brothers") ? brothersActive : brothersInactive} />
+                                </div>
+                            </div>
+                        </div>
+                        {currentSelection && <div className="committee-card align-items-center justify-content-center">
+                            <p className="committee-title">{COMMITTEE_TITLE}</p>
+                            <p className="committee-details">{COMMITTEE_CONTENT}</p>
+                            {COMMITTEE_IMG && <div className="img-container"><img className="committee-img" src={COMMITTEE_IMG} /></div>}
+                            {LEARN_MORE_LINK && <div><p class="learn-more">Learn More</p><p className="learn-more-text">{LEARN_MORE_TXT} <a
+                                href={LEARN_MORE_LINK} target="_blank"
+                                class="breadcrumb-item inactive-link">here</a>.</p></div>}
+                        </div>}
+                    </div>
+
+
+                </>)
+        }
+
+        ReactDOM.render(<TheFightAgainstCorruptionPage />, document.getElementById("root"));
+    </script>
+
+    <div id="root"></div>
+</body>
